@@ -1,0 +1,80 @@
+{% extends 'adminBase.html' %}
+{% block content %}
+
+<div>
+    
+    <div>
+        
+            <table style="margin: auto;">
+                <tr>
+                    <form method="POST" action="searchShipper">
+                        {% csrf_token %}
+                        <td>
+                            <input type="text" style="margin: auto;width: 400px;font-size: larger;padding: 10px 10px 10px 10px;" name="search">
+                        </td>
+                        <td>
+                            <button type="submit"  name="src">SEARCH</button>
+                        </td>
+                    </form>
+                </tr>
+                <tr style="margin: auto;">
+                    <td colspan="2">
+                        <a href="addShipper" style="display:block;background:#f1e0e0;padding: 5px 5px 5px 5px;font-size: 24px;width: 400px;text-align: center;color:rgb(89, 6, 156);" >ADD A SHIPPER</a>
+                    </td>
+                </tr>
+            </table>
+        
+        <h1 style="text-align: center;">SELLERS INFO</h1>
+        <p style="text-align: center;">{{data.msg}}</p>
+
+        <table style="padding: 10px 00px 0 100px ;margin: auto;">
+            <th>
+                <td style="width: 200px;font-size: 18px;text-align: center;background-color: #fc2151;">Shipper Id</td>   
+                <td style="width: 200px;font-size: 18px;text-align: center;background-color: #fc2151;">Company name</td>               
+                <td style="width: 200px;font-size: 18px;text-align: center;background-color: #fc2151;">Contacts</td>
+                <td style="width: 200px;font-size: 18px;text-align: center;background-color: #fc2151;">Info</td>
+                <td colspan="2" style="width: 200px;font-size: 18px;text-align: center;background-color: #fc2151;">Action</td>
+            </th>
+
+            {% for d in data.data %}
+            <tr>
+                <td></td>
+                <td><p>{{d.SHIPPER_ID}}</p></td>
+                <td><p>{{d.COMPANY_NAME}}</p></td>
+                <td><p>Phone: +880{{d.PHONE}}</p></td>
+                <td><p>Postal Code: {{d.POSTAL_CODE}}</p></td>
+                <td style="float: right;">
+                    <form action="editShipper" method="POST" target="_blank">
+                        {% csrf_token %}
+                        <input type="text" name="id" value="{{d.SHIPPER_ID}}" hidden>
+                        <button type="submit" style="width: 100px;">Edit</button>
+                    </form>
+                   
+                </td>
+                <td>
+                    <form action="deleteShipper" method="POST" target="_blank">
+                        {% csrf_token %}
+                        <input type="text" name="id" value="{{d.SHIPPER_ID}}" hidden>
+                        <button type="submit" style="width: 100px;">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>.</td>
+                <td>.</td>
+                <td>.</td>
+                <td>.</td>
+                <td>.</td>
+                <td>.</td> 
+            </tr>
+            {% endfor %}
+
+        </table>
+        
+        
+        
+    </div>
+    
+</div>
+
+{% endblock content %}

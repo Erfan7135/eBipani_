@@ -1,0 +1,120 @@
+{% extends 'base.html' %} {% block content %}
+
+<link type="text/css" rel="stylesheet" href="/static/css/signin.css" />
+
+<body class="signbody">
+  <div class="signup">
+    <form id="suf" method="post">
+      {% csrf_token %} {% if data|length > 0 %}
+      <div style="width: 350px; text-align: center">
+        {% if data.msg == "success" %}
+        <label
+          style="color: rgb(21, 255, 0); font-style: bold; font-size: 28px"
+        >
+          Registration Succesfull </label
+        ><br />
+        {%else %}
+        <label style="color: rgba(255, 66, 66, 0.849); font-size: 28px">
+          {{data.msg}} </label
+        ><br />
+        {% endif %}
+      </div>
+      {% endif %}
+
+      <label for="fname">First name:</label><br />
+      <input
+        type="text"
+        id="input"
+        name="fname"
+        placeholder="First Name"
+        required
+      /><br /><br />
+      <label for="lname">Last name:</label><br />
+      <input
+        type="text"
+        id="input"
+        name="lname"
+        placeholder="Last Name"
+        required
+      /><br /><br />
+      <label for="mail">E-Mail:</label><br />
+      <input
+        type="text"
+        id="input"
+        name="mail"
+        placeholder="xxxx@xxx.xxx"
+        title="xxxx@xxx.xxx"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+        required
+      /><br /><br />
+      <span id="text"></span>
+      <label for="phone">Mobile:</label><br />
+      <input
+        type="tel"
+        id="input"
+        name="phone"
+        pattern="[01][0-9]{10}"
+        title="01xxxxxxxxx"
+        placeholder="01xxxxxxxxx"
+        required
+      /><br /><br />
+      <label for="city">City:</label><br />
+      <input type="text" id="input" name="city" required /><br /><br />
+      <label for="country">Country:</label><br />
+      <input type="text" id="input" name="country" required /><br /><br />
+      <label for="postal">Postal Code:</label><br />
+      <input
+        type="tel"
+        id="input"
+        name="postal"
+        pattern="[0-9]{4}"
+        title="xxxx(Only Number Allowed)"
+        placeholder="xxxx"
+        required
+      /><br /><br />
+      <label for="pas">Password:</label><br />
+      <input
+        id="password"
+        type="password"
+        name="pas"
+        pattern=".{6,}"
+        title="At least 6 or more characters."
+        onchange="validatePassword()"
+        required
+      /><br /><br />
+      <label for="pas2">Confirm Password:</label><br />
+      <input
+        class="pas"
+        id="confirm_password"
+        type="password"
+        name="pas2"
+        pattern=".{6,}"
+        title="At least 6 or more characters."
+        onkeyup="validatePassword()"
+        required
+      /><br /><br />
+      <input type="reset" id="button" value="Reset" />
+      <input type="submit" id="button" value="Submit" />
+    </form>
+  </div>
+  <script type="text/javascript">
+    var password = document.getElementById("password");
+    var confirm_password = document.getElementById("confirm_password");
+
+    function validatePassword() {
+      var password = document.getElementById("password");
+      var confirm_password = document.getElementById("confirm_password");
+
+      if (password.value != confirm_password.value) {
+        confirm_password.setCustomValidity("Passwords Don't Match");
+      } else {
+        confirm_password.setCustomValidity("");
+      }
+    }
+
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+  </script>
+</body>
+
+{% endblock content %}

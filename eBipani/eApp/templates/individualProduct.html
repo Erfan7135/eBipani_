@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {% block content %}
+
+<div>
+  {% for d in prod %}
+  <div>
+    <img src="{{d.IMAGE}}" alt="product img" /><br />
+    <li>Product Name : {{d.PRODUCT_NAME}}</li>
+    <br />
+    <li>Unit Price : {{d.UNIT_PRICE}}</li>
+    <br />
+    <li>Units in Stock : {{d.UNITS_IN_STOCK}}</li>
+    <br />
+    <li>Description : {{d.DESCRIPTION}}</li>
+    <br />
+    <form method="GET">
+      <button type="submit" name="add2cart" disabled="true">Add to cart</button>
+    </form>
+  </div>
+  <br />
+  {% endfor %}
+
+  <div>
+    <h5>Reviews</h5>
+    <div>
+      {% for r in reviews %}
+      <p>{{r.NAME}} :</p>
+      <p>{{r.REVIEW}}</p>
+      <br />
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock content%}

@@ -1,0 +1,82 @@
+{% extends 'adminBase.html' %}
+{% block content %}
+
+<div>
+    
+    <div>
+        <form method="POST" action="searchSeller">
+            {% csrf_token %}
+            <table style="margin: auto;">
+                <tr>
+                    <td>
+                        <input type="text" style="margin: auto;width: 400px;font-size: larger;padding: 10px 10px 10px 10px;" name="search">
+                    </td>
+                    <td>
+                        <button type="submit"  name="src">SEARCH</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <h1 style="text-align: center;">SELLERS INFO</h1>
+        <p style="text-align: center;">{{data.msg}}</p>
+
+        <table style="padding: 10px 00px 0 100px ;margin: auto;">
+            <th>
+                <td style="width: 200px;font-size: 18px;text-align: center;background-color: #fc2151;">Shop name</td>
+                <td style="width: 200px;font-size: 18px;text-align: center;background-color: #fc2151;">Info</td>
+                <td style="width: 200px;font-size: 18px;text-align: center;background-color: #fc2151;">Contacts</td>
+                <td style="width: 200px;font-size: 18px;text-align: center;background-color: #fc2151;">Address</td>
+                <td style="width: 200px;font-size: 18px;text-align: center;background-color: #fc2151;">Action</td>
+            </th>
+
+            {% for d in data.data %}
+            <tr>
+                <td></td>
+                <td><p>{{d.SHOP_NAME}}</p></td>
+                <td><p>Reg. No: {{d.REGISTRATION_NO}}</p></td>
+                <td><p>{{d.EMAIL}}</p></td>
+                <td><p>City: {{d.CITY}}</p></td>
+                <td>
+                    <form action="deleteSeller" method="POST" target="_blank">
+                        {% csrf_token %}
+                        <input type="text" name="email" value="{{d.EMAIL}}" hidden>
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><p>BKASH. No: {{d.BKASH_NO}}</p></td>
+                <td><p style="color:darkblue">Phone: +880{{d.PHONE}}</p></td>
+                <td><p>Postal Code: {{d.POSTAL_CODE}} </p></td>
+                <td></td>
+                
+            <tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><p>Country: {{d.COUNTRY}}</p></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>.</td>
+                <td>.</td>
+                <td>.</td>
+                <td>.</td>
+                <td>.</td>
+                <td>.</td> 
+            </tr>
+            {% endfor %}
+
+        </table>
+        
+        
+        
+    </div>
+    
+</div>
+
+{% endblock content %}

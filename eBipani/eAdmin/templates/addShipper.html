@@ -1,0 +1,40 @@
+{% extends 'adminBase.html' %}
+{% block content %}
+
+<link type="text/css" rel="stylesheet" href="/static/css/signup.css">
+<body class="signbody">
+
+    
+
+    <div class="signup">
+        <form action="regShipper" id="suf" method="post">
+            {% csrf_token %}
+
+            {% if data|length > 0 %}
+            <div style="width: 350px;text-align: center;">
+                {% if data.msg == "success" %}
+                    <label style="color:rgb(21, 255, 0);font-style:bold;font-size: 28px;">
+                         Registration Succesfull
+                    </label><br>
+                {%else  %}
+                    <label style="color:rgba(255, 66, 66, 0.849);font-size: 28px;">
+                        {{data.msg}}
+                    </label><br>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            <label for="fname">Company Name:</label><br>
+            <input type="text" id="input" name="Cname" placeholder="Company Name" required><br><br>
+            <label for="phone">Mobile:</label><br>
+            <input type="tel" id="input" name="phone" pattern="[01][0-9]{10}" title="01xxxxxxxxx" placeholder="01xxxxxxxxx" required><br><br>
+            <label for="postal">Postal Code:</label><br>
+            <input type="tel" id="input" name="postal" pattern="[0-9]{4}" title="xxxx(Only Number Allowed)" placeholder="xxxx" required ><br><br>
+            <input type="reset" id="button" value="Reset">
+            <input type="submit" id="button" value="Submit">
+        </form>
+    </div>
+</body>
+
+{% endblock content %}
+

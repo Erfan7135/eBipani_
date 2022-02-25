@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block content %}
+
+{% if data|length > 0 %}
+<div >
+    <span onclick="this.parentElement.style.display='none';">&times;</span>
+    {{data.msg}}
+</div>
+{% endif %}
+
+<div>
+    <div>
+        <h3> User Login </h3></br>
+        <form method="POST">
+        {% csrf_token %}
+            <div>
+                <input type="text" name="email" placeholder="enter email" required>
+            </div><br>
+            <div>
+                <input type="password" name="password" placeholder="password" required>
+            </div><br>
+            <div>
+                <input type="reset" id="button" value="Reset" />
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <div>
+        <div>
+            <a href="/eApp/users/csignin/">Sign in</a>
+        </div>
+        <div>
+            <a href="">Forget password?</a>
+        </div>
+    </div>
+</div>
+
+{% endblock content%}

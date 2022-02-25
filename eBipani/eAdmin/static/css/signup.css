@@ -1,0 +1,93 @@
+.signbody{
+    background-image: url("/static/img/signup.jpg");
+}
+
+.signup{
+    margin:100px 100px 100px 100px;
+    float: right;
+    width: 520px;
+    
+    background-color: rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 10px;
+    box-shadow: 2px 2px 15px;
+}
+
+form#suf{
+    margin: 75px 75px 25px 75px;
+    
+}
+label{
+    font-size: 18px;
+    font-family: sans-serif;
+    font-style: italic;
+    color: #fff;;
+    
+}
+
+input#input{
+    width:360px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    outline: 0;
+    padding: 7px;
+    box-shadow: inset 1px 1px 5px rgba(0,0,0,0.3);
+    font-size: 18px;
+
+}
+input#password{
+    width:360px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    outline: 0;
+    padding: 7px;
+    box-shadow: inset 1px 1px 5px rgba(0,0,0,0.3);
+    font-size: 18px;
+
+}
+input#confirm_password{
+    width:360px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    outline: 0;
+    padding: 7px;
+    box-shadow: inset 1px 1px 5px rgba(0,0,0,0.3);
+    font-size: 18px;
+
+}
+
+
+
+
+input#button{
+    width: 100px;
+    height: 50px;
+    margin-left: 50px;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 3px;
+    background-color: rgba(0,0,0,0.3);
+    color: #fff;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+}
+
+input#button:hover{
+    background-color: #fff;
+    color: rgba(0,0,0,0.8);
+    border: 1px 1px 5px rgba(0,0,0,0.8);
+    box-shadow: 1px solid rgba(255,255,255,0.3);
+}
+
+
+.pas{
+    width:360px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    outline: 0;
+    padding: 7px;
+    box-shadow: inset 1px 1px 5px rgba(0,0,0,0.3);
+    font-size: 18px;
+ 
+}
